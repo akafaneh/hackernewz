@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next'
 
 
 const Home = (props) => {
-  console.log(props);
+  console.log(props, 'test');
   
   return (
     <>
