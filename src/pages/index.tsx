@@ -1,11 +1,34 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.scss'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { get } from '@/utils';
+import { Story, TopStories, User } from '@/types';
 
+export const getServerSideProps = async () => {
+  const topStories = await get<TopStories>(`${process.env.HACKERNEWS_ENDPOINT_BASE_URL}/topstories.json`)
+  const topStoriesData = await Promise.allSettled(topStories.slice(0, 10).map(
+    async (id) => {
+      return get<Story>(`${process.env.HACKERNEWS_ENDPOINT_BASE_URL}/item/${id}.json`)
+    }
+  ))
 
-const Home = (props) => {
-  console.log(props, 'test');
-  
+  const topStoriesDataWithUserData = await Promise.allSettled(topStoriesData.map(async (storyObj) => {
+    if (storyObj.status === 'rejected') return
+    const userData = await get<User>(`${process.env.HACKERNEWS_ENDPOINT_BASE_URL}/user/${storyObj.value.by}.json`)
+
+    return { ...storyObj.value, by: { ...userData } }
+  }))
+
+  return {
+    props: {
+      topStoriesDataWithUserData
+    },
+  }
+}
+
+const Home = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+console.log(props.topStoriesDataWithUserData);
+
   return (
     <>
       <Head>
@@ -14,21 +37,12 @@ const Home = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-
       </main>
     </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const topStories = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
-  const topStoriesJson = await topStories.json()
-  return {
-    props: {
-      topStoriesJson
-    }, // will be passed to the page component as props
-  }
-}
+
 
 
 export default Home
