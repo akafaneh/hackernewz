@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./cards.module.scss";
 import DummyImage from "../../../public/placeholder.jpg";
 import Image from "next/image";
-import ButtonLink from "../buttons/button-link";
+import ButtonLink from "@/components/buttons/button-link";
 import clsx from "clsx";
 import dayjs from "dayjs";
 
