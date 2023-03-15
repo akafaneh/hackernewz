@@ -5,12 +5,10 @@ export type ButtonLinkProps = {
   url: string;
   target?: HTMLAttributeAnchorTarget;
 };
-const ButtonLink = ({ children, target, url }: ButtonLinkProps) => {
+export const ButtonLink = ({ children, target, url }: ButtonLinkProps) => {
   return (
     <a href={url} target={target} className={styles.button}>
       {children}
     </a>
   );
 };
-
-export default ButtonLink;

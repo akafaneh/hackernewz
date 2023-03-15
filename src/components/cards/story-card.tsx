@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./cards.module.scss";
 import DummyImage from "../../../public/placeholder.jpg";
 import Image from "next/image";
-import ButtonLink from "@/components/buttons/button-link";
 import clsx from "clsx";
 import dayjs from "dayjs";
+import { ButtonLink } from "@/components";
 
 export type StoryCardProps = {
   title: string;
@@ -15,7 +15,7 @@ export type StoryCardProps = {
   authorKarmaScore: number;
   className?: string;
 };
-const StoryCard = ({ className, timestamp, title, authorId, authorKarmaScore, score, url }: StoryCardProps) => {
+export const StoryCard = ({ className, timestamp, title, authorId, authorKarmaScore, score, url }: StoryCardProps) => {
   return (
     <div className={clsx(styles.card, className)}>
       <Image src={DummyImage} alt="Dummy pic" className={styles.img} />
@@ -36,5 +36,3 @@ const StoryCard = ({ className, timestamp, title, authorId, authorKarmaScore, sc
     </div>
   );
 };
-
-export default StoryCard;

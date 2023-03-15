@@ -3,7 +3,7 @@ import styles from "@/styles/pages/home.module.scss";
 import { InferGetServerSidePropsType } from "next";
 import { get } from "@/utils";
 import { Story, TopStories, User } from "@/types";
-import StoryCard from "@/components/cards/story-card";
+import { StoryCard } from "@/components";
 
 export const getServerSideProps = async () => {
   const topStories = await get<TopStories>(`${process.env.HACKERNEWS_ENDPOINT_BASE_URL}/topstories.json`);
