@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "@/styles/home.module.scss";
+import styles from "@/styles/pages/home.module.scss";
 import { InferGetServerSidePropsType } from "next";
 import { get } from "@/utils";
 import { Story, TopStories, User } from "@/types";
