@@ -2,9 +2,10 @@
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  padding: 6rem;
+  padding: 5vw;
   min-height: 100vh;
   gap: 12px;
+  justify-content: center;
 }
 
 .story {
