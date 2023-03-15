@@ -1,22 +1,13 @@
 .main {
   display: flex;
   flex-flow: row wrap;
-  //margin-left: -12px; /* Adjustment for the gutter */
   width: 100%;
   padding: 6rem;
   min-height: 100vh;
   gap: 12px;
 }
 
-.story{
+.story {
   flex: auto;
   min-width: 150px;
-  //margin: 0 12px 12px 0; /* Some gutter */
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  width: var(--max-width);
-  max-width: 100%;
 }

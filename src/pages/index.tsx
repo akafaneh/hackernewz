@@ -19,7 +19,7 @@ export const getServerSideProps = async () => {
 
   topStoriesData.sort(function (a, b) {
     if (a.status === "rejected" || b.status === "rejected") return 0;
-    return a.value.score - b.value.score;
+    return b.value.score - a.value.score;
   });
 
   const topStoriesDataWithUserData = await Promise.allSettled(

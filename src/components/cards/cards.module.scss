@@ -1,5 +1,5 @@
 .card {
-  background-color: var(--white);
+  background-color: var(--gray);
   max-width: 24rem;
   border-radius: 0.5rem;
   border-width: 1px;
@@ -16,20 +16,32 @@
 
 .body {
   padding: 1.25rem;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+}
+
+.metaData {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  color: var(--text);
+  grid-auto-flow: column;
+  font-size: 0.75rem;
+}
+
+.storyInfo {
+  text-align: right;
+  color: var(--primary);
 }
 
 .title {
-  margin-bottom: 0.5rem;
   color: var(--text-dark);
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
   letter-spacing: -0.025em;
-}
-
-.content {
-  margin-bottom: 0.75rem;
-  color: var(--text);
-
-  font-weight: 400;
+  height: 150px;
 }
